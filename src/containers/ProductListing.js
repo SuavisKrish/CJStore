@@ -19,7 +19,7 @@ const ProductListing = () => {
 
   useEffect(() => {
     fecthProducts();
-  }, []);
+  }, [fecthProducts]);
 
   console.log("products:", products);
 

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectedProduct,
   removeSelectedProduct,
+  addToCart,
 } from "../redux/actions/productActions";
 
 const ProductDetails = () => {
@@ -12,6 +13,10 @@ const ProductDetails = () => {
   let product = useSelector((state) => state.product);
   const { image, title, price, category, description } = product;
   const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(productId));
+  };
 
   const fetchProductDetail = async (id) => {
     const response = await axios
@@ -27,7 +32,7 @@ const ProductDetails = () => {
     return () => {
       dispatch(removeSelectedProduct());
     };
-  }, [productId]);
+  }, [productId, dispatch]);
   return (
     <div className="ui grid container">
       {Object.keys(product).length === 0 ? (
@@ -38,7 +43,7 @@ const ProductDetails = () => {
             <div className="ui vertical divider">AND</div>
             <div className="middle aligned row">
               <div className="column lp">
-                <img className="ui fluid image" src={image} />
+                <img className="ui fluid image" src={image} alt="Imagerey" />
               </div>
               <div className="column rp">
                 <h1>{title}</h1>
@@ -51,7 +56,9 @@ const ProductDetails = () => {
                   <div className="hidden content">
                     <i className="shop icon"></i>
                   </div>
-                  <div className="visible content">Add to Cart</div>
+                  <div className="visible content" onClick={handleAddToCart}>
+                    Add to Cart
+                  </div>
                 </div>
               </div>
             </div>
