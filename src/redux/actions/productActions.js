@@ -7,16 +7,22 @@ export const setProducts = (products) => {
   };
 };
 
+export const removeSelectedProduct = () => {
+  return {
+    type: ActionTypes.REMOVE_SELECTED_PRODUCT,
+  };
+};
+
 export const showCart = () => {
   return {
     type: ActionTypes.SHOW_CART,
   };
 };
 
-export const addToCart = (product) => {
+export const addToCart = (item) => {
   return {
     type: ActionTypes.ADD_TO_CART,
-    payload: product,
+    payload: item,
   };
 };
 
@@ -41,11 +47,5 @@ export const selectedProduct = (product) => {
   return {
     type: ActionTypes.SELECTED_PRODUCT,
     payload: product,
-  };
-};
-
-export const removeSelectedProduct = (productId) => {
-  return {
-    type: ActionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
