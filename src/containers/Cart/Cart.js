@@ -10,8 +10,8 @@ const Cart = (props) => {
       {cartItems.length > 0 &&
         cartItems.map((cartItem) => (
           <>
-            <div className={classes.total}>
-              <span>{cartItem.title.substr(0, 8)}</span>
+            <div className={classes.total} key={cartItem.id}>
+              <span>{cartItem.title?.substr(0, 8)}</span>
               <span>₹{cartItem.price}</span>
             </div>
           </>

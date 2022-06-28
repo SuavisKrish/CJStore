@@ -56,7 +56,7 @@ const ProductDetails = () => {
                 <h3 className="ui brown block header">{category}</h3>
                 <p>{description}</p>
                 <div>
-                  <button onClick={() => dispatch(addToCart(productId))}>
+                  <button onClick={() => dispatch(addToCart(product))}>
                     Add to Cart
                   </button>
                 </div>
