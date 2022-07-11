@@ -7,9 +7,11 @@ export const setProducts = (products) => {
   };
 };
 
-export const removeSelectedProduct = () => {
+export const removeSelectedProduct = (item) => {
+  console.log("REMOVE_SELECTED_PRODUCT>>>", item);
   return {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
+    payload: item,
   };
 };
 
@@ -44,6 +46,7 @@ export const removeProductFromCart = (productId) => ({
 });
 
 export const selectedProduct = (product) => {
+  product.quantity = 1;
   return {
     type: ActionTypes.SELECTED_PRODUCT,
     payload: product,

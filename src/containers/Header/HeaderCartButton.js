@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const HeaderCartButton = (props) => {
   var cart = useSelector((state) => state.cart.cartList);
-  console.log("cartList value", cart);
+  console.log("Header cart value", cart);
 
   return (
     <>

@@ -9,11 +9,13 @@ import {
   addToCart,
 } from "../redux/actions/productActions";
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
   // [cartCount, setCartCount] = useState(0);
+
   const { productId } = useParams();
+
   let product = useSelector((state) => state.product);
-  console.log("Krishna test", product);
+  console.log("Product Details>>>", product);
   const { image, title, price, category, description } = product;
   const dispatch = useDispatch();
 
@@ -54,6 +56,7 @@ const ProductDetails = () => {
                 <h1>{title}</h1>
                 <h2 className="ui teal tag label">${price}</h2>
                 <h3 className="ui brown block header">{category}</h3>
+
                 <p>{description}</p>
                 <div>
                   <button onClick={() => dispatch(addToCart(product))}>

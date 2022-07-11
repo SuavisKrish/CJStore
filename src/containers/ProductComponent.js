@@ -8,10 +8,12 @@ const ProductComponent = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
   const renderList = products.map((product) => {
+    product.quantity = 1;
     const { id, title, image, price, category } = product;
+
     return (
-      <Card>
-        <div className="four wide column" key={id}>
+      <Card key={id}>
+        <div className="four wide column">
           <Link to={`/product/${id}`}>
             <div className="ui link cards">
               <div className="card">

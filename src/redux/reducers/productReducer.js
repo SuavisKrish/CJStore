@@ -1,29 +1,34 @@
 import { ActionTypes } from "../constants/action-types";
 
-const intialState = {
-  products: [],
-};
-
-export const productsReducer = (state = intialState, { type, payload }) => {
-  switch (type) {
-    case ActionTypes.SET_PRODUCTS:
-      return { ...state, products: payload };
-    default:
-      return state;
+export const reducer = (cart = [], { type, payload }) => {
+  if (type === ActionTypes.ADD_TO_CART) {
+    let tempcart = cart.filter((item) => item.id === payload.id);
+    if (tempcart < 1) {
+      return [...cart, payload];
+    } else {
+      return cart;
+    }
   }
-};
-
-export const selectedProductsReducer = (
-  state = intialState,
-  { type, payload }
-) => {
-  console.log(type);
-  switch (type) {
-    case ActionTypes.SELECTED_PRODUCT:
-      return { ...state, ...payload };
-    case ActionTypes.REMOVE_SELECTED_PRODUCT:
-      return {};
-    default:
-      return state;
+  if (type === ActionTypes.REMOVE) {
+    return cart.filter((item) => item.id !== payload.id);
   }
+  if (type === ActionTypes.INCREASE) {
+    let tempcart = cart.map((item) => {
+      if (item.id === payload.id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    return tempcart;
+  }
+  if (type === ActionTypes.DECREASE) {
+    let tempcart = cart.map((item) => {
+      if (item.id === payload.id) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    return tempcart;
+  }
+  return cart;
 };

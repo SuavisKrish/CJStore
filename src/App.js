@@ -1,4 +1,5 @@
 import "./App.css";
+import { useRef } from "react";
 import Header from "./containers/Header/Header.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductDetails from "./containers/ProductDetails";
@@ -9,6 +10,7 @@ import NoPage from "./containers/NoPage";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
+  const quantity = useRef(1);
 
   const showCartHandler = () => {
     setCartIsShown(true);
@@ -28,7 +30,10 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductListing />} />
           <Route path="/cart" element={<Cart onClose={hideCartHandler} />} />
-          <Route path="/product/:productId" element={<ProductDetails />} />
+          <Route
+            path="/product/:productId"
+            element={<ProductDetails quantity={quantity} />}
+          />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </Router>
