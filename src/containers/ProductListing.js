@@ -15,8 +15,6 @@ const ProductListing = () => {
       .catch((err) => {
         console.log("Err", err);
       });
-
-    console.log("axios dta", response.data);
     dispatch(setProducts(response.data));
   }, [dispatch]);
 

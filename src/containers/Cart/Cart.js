@@ -37,7 +37,9 @@ const Cart = (props) => {
               <span>
                 Amount:₹{cartItem.quantity * cartItem.price.toFixed(2)}
               </span>
-              <button onClick={() => dispatch()}>Del</button>
+              <button onClick={() => dispatch(removeSelectedProduct(cartItem))}>
+                Del
+              </button>
             </div>
           </>
         ))}
