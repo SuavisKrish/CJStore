@@ -7,10 +7,17 @@ export const setProducts = (products) => {
   };
 };
 
-export const removeSelectedProduct = (item) => {
-  console.log("REMOVE_SELECTED_PRODUCT>>>", item);
+export const removeSelectedProduct = () => {
+  console.log("REMOVE_SELECTED_PRODUCT>>>");
   return {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
+  };
+};
+
+export const deleteSelectedProduct = (item) => {
+  console.log("delete_SELECTED_PRODUCT>>>", item);
+  return {
+    type: ActionTypes.DELETE_SELECTED_PRODUCT,
     payload: item,
   };
 };

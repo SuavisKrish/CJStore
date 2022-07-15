@@ -3,7 +3,7 @@ import classes from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
-  removeSelectedProduct,
+  deleteSelectedProduct,
 } from "../../redux/actions/productActions";
 
 const Cart = (props) => {
@@ -37,7 +37,7 @@ const Cart = (props) => {
               <span>
                 Amount:₹{cartItem.quantity * cartItem.price.toFixed(2)}
               </span>
-              <button onClick={() => dispatch(removeSelectedProduct(cartItem))}>
+              <button onClick={() => dispatch(deleteSelectedProduct(cartItem))}>
                 Del
               </button>
             </div>

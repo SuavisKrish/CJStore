@@ -21,7 +21,7 @@ export const addToCartReducer = (state = intialState, { type, payload }) => {
       }
       break;
 
-    case ActionTypes.REMOVE_SELECTED_PRODUCT:
+    case ActionTypes.DELETE_SELECTED_PRODUCT:
       return {
         cartList: state.cartList.filter((item) => item.id !== payload.id),
       };
@@ -47,7 +47,8 @@ export const selectedProductsReducer = (
   switch (type) {
     case ActionTypes.SELECTED_PRODUCT:
       return { ...state, ...payload };
-
+    case ActionTypes.REMOVE_SELECTED_PRODUCT:
+      return {};
     default:
       return state;
   }
