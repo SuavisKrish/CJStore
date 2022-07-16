@@ -13,7 +13,7 @@ const Cart = (props) => {
   const addition = (acc, currentvalue) => {
     return acc + currentvalue.price * currentvalue.quantity;
   };
-  const total = cartItems.reduce(addition, 0);
+  const total = cartItems.reduce(addition, 0).toFixed(2);
 
   const handleOnClick = () => {};
 
