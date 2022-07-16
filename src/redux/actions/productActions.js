@@ -22,6 +22,22 @@ export const deleteSelectedProduct = (item) => {
   };
 };
 
+export const increaseItem = (item) => {
+  console.log("IncreaseItem>>>", item);
+  return {
+    type: ActionTypes.INCREASE,
+    payload: item,
+  };
+};
+
+export const decreaseItem = (item) => {
+  console.log("DecreaseItem>>>", item);
+  return {
+    type: ActionTypes.DECREASE,
+    payload: item,
+  };
+};
+
 export const showCart = () => {
   return {
     type: ActionTypes.SHOW_CART,

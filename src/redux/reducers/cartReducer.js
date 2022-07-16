@@ -25,6 +25,24 @@ export const addToCartReducer = (state = intialState, { type, payload }) => {
       return {
         cartList: state.cartList.filter((item) => item.id !== payload.id),
       };
+
+    case ActionTypes.INCREASE:
+      return {
+        cartList: state.cartList.map((item) =>
+          item.id === payload.id
+            ? { ...item, quantity: payload.quantity + 1 }
+            : item
+        ),
+      };
+
+    case ActionTypes.DECREASE:
+      return {
+        cartList: state.cartList.map((item) =>
+          item.id === payload.id
+            ? { ...item, quantity: payload.quantity - 1 }
+            : item
+        ),
+      };
     default:
       return state;
   }

@@ -2,8 +2,9 @@ import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addToCart,
   deleteSelectedProduct,
+  increaseItem,
+  decreaseItem,
 } from "../../redux/actions/productActions";
 
 const Cart = (props) => {
@@ -31,9 +32,13 @@ const Cart = (props) => {
                 alt={cartItem.title}
               />
               <span>{cartItem.title?.substr(0, 8)}</span>
-              <button onClick={() => dispatch(addToCart(cartItem))}>-</button>
+              <button onClick={() => dispatch(decreaseItem(cartItem))}>
+                -
+              </button>
               <span>{cartItem.quantity}</span>
-              <button onClick={() => dispatch(addToCart(cartItem))}>+</button>
+              <button onClick={() => dispatch(increaseItem(cartItem))}>
+                +
+              </button>
               <span>
                 Amount:₹{cartItem.quantity * cartItem.price.toFixed(2)}
               </span>
