@@ -16,10 +16,6 @@ const Cart = (props) => {
   };
   const total = cartItems.reduce(addition, 0).toFixed(2);
 
-  const handleOnClick = () => {};
-
-  const handleOnRemove = () => {};
-
   return (
     <Modal onClose={props.onClose}>
       {cartItems.length > 0 &&
@@ -32,9 +28,12 @@ const Cart = (props) => {
                 alt={cartItem.title}
               />
               <span>{cartItem.title?.substr(0, 8)}</span>
-              <button onClick={() => dispatch(decreaseItem(cartItem))}>
-                -
-              </button>
+              {cartItem.quantity > 0 && (
+                <button onClick={() => dispatch(decreaseItem(cartItem))}>
+                  -
+                </button>
+              )}
+
               <span>{cartItem.quantity}</span>
               <button onClick={() => dispatch(increaseItem(cartItem))}>
                 +
@@ -53,7 +52,7 @@ const Cart = (props) => {
         <button className={classes["button--alt"]} onClick={props.onClose}>
           Close
         </button>
-        <button className={classes.button}>Order</button>
+        {total > 1 && <button className={classes.button}>Checkout</button>}
       </div>
     </Modal>
   );
