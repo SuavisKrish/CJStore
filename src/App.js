@@ -7,9 +7,11 @@ import ProductListing from "./containers/ProductListing";
 import Cart from "./containers/Cart/Cart";
 import { useState } from "react";
 import NoPage from "./containers/NoPage";
+import Login from "./components/Login";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
+  const [token,setToken] = useState(localStorage.getItem("userToken") ?? null)
   const quantity = useRef(1);
 
   const showCartHandler = () => {
@@ -28,7 +30,8 @@ function App() {
           <Header onShowCart={showCartHandler} />
         </div>
         <Routes>
-          <Route path="/" element={<ProductListing />} />
+        <Route path="/" element={<ProductListing/>} />
+          {/* <Route path="/" element={<Login token = {token} setToken = {setToken}/>} /> */}
           <Route path="/cart" element={<Cart onClose={hideCartHandler} />} />
           <Route
             path="/product/:productId"

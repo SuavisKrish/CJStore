@@ -28,11 +28,13 @@ const Cart = (props) => {
                 alt={cartItem.title}
               />
               <span>{cartItem.title?.substr(0, 8)}</span>
-              {cartItem.quantity > 0 && (
+              {cartItem.quantity > 1 ? (
                 <button onClick={() => dispatch(decreaseItem(cartItem))}>
                   -
                 </button>
-              )}
+              ) : (<button onClick={() => dispatch(deleteSelectedProduct(cartItem))}>
+                <i class="trash alternate outline icon"></i>
+              </button>)}
 
               <span>{cartItem.quantity}</span>
               <button onClick={() => dispatch(increaseItem(cartItem))}>
@@ -42,16 +44,19 @@ const Cart = (props) => {
                 Amount:₹{cartItem.quantity * cartItem.price.toFixed(2)}
               </span>
               <button onClick={() => dispatch(deleteSelectedProduct(cartItem))}>
-                Del
+                <i class="trash alternate outline icon"></i>
               </button>
             </div>
           </>
         ))}
       <div className={classes.actions}>
-        <div>Total Bill: {total}</div>
-        <button className={classes["button--alt"]} onClick={props.onClose}>
-          Close
-        </button>
+        {total > 0 ? (
+          <><div>Total Bill: {total}</div>
+            <button className={classes["button--alt"]} onClick={props.onClose}>
+              Close
+            </button></>) : (<button className={classes["button--alt"]} onClick={props.onClose}>
+              Continue shopping
+            </button>)}
         {total > 1 && <button className={classes.button}>Checkout</button>}
       </div>
     </Modal>

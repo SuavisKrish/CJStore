@@ -13,7 +13,7 @@ const ProductComponent = () => {
 
     return (
       <Card key={id}>
-        <div className="four wide column">
+        
           <Link to={`/product/${id}`}>
             <div className="ui link cards">
               <div className="card">
@@ -29,11 +29,11 @@ const ProductComponent = () => {
             </div>
           </Link>
           <div>
-            <button onClick={() => dispatch(addToCart(product))}>
+            <button className="addTocart" onClick={() => dispatch(addToCart(product))}>
               Add to Cart
             </button>
           </div>
-        </div>
+      
       </Card>
     );
   });

@@ -9,6 +9,18 @@ const ProductListing = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
 
+  const fecthCategory = useCallback(
+    async (category) => {
+      const response = await axios
+        .get("https://fakestoreapi.com/products/${category}")
+        .catch((err) => {
+          console.log("Err", err);
+        });
+      dispatch(setProducts(response.data));
+    },
+    [dispatch]
+  );
+
   const fecthProducts = useCallback(async () => {
     const response = await axios
       .get("https://fakestoreapi.com/products")
@@ -24,9 +36,26 @@ const ProductListing = () => {
 
   console.log("productList >>>", products);
   return (
-    <div className="ui grid container">
-      <ProductComponent />
-    </div>
+    <>
+      <div>
+        <button class="ui black button" onClick={fecthCategory()}>
+          Jewellery
+        </button>
+        <button class="ui black button" onClick={fecthCategory()}>
+          Jewellery
+        </button>
+        <button class="ui black button" onClick={fecthCategory()}>
+          Jewellery
+        </button>
+        <button class="ui black button" onClick={fecthCategory()}>
+          Jewellery
+        </button>
+      </div>
+
+      <div className="ui grid container">
+        <ProductComponent />
+      </div>
+    </>
   );
 };
 
