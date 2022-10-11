@@ -16,7 +16,7 @@
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color: #4d1601;
+  background-color: rgb(14, 1, 1);;
   color: white;
   display: flex;
   justify-content: space-around;
@@ -49,7 +49,7 @@
 
 .button:hover .badge,
 .button:active .badge {
-  background-color: #92320c;
+  background-color: rgb(14, 1, 1);
 }
 
 .bump {
