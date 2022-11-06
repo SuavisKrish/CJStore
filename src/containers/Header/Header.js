@@ -11,7 +11,11 @@ const Header = (props) => {
         <Link to="/">
           <h1>Fakecart</h1>
         </Link>
-        <HeaderCartButton onClick={props.onShowCart} />
+        <HeaderCartButton
+          onClick={props.onShowCart}
+          setToken={props.setToken}
+          token={props.token}
+        />
       </header>
       {/* <div className={classes["main-image"]}>
         <img src={ShopImage} alt="All partners" />

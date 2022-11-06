@@ -27,16 +27,32 @@ function App() {
       <Router>
         <div style={{ padding: "40px" }}>
           {cartIsShown && <Cart onClose={hideCartHandler} />}
-          <Header onShowCart={showCartHandler} />
+          <Header
+            token={token}
+            setToken={setToken}
+            onShowCart={showCartHandler}
+          />
         </div>
         <Routes>
-          <Route path="/" element={<ProductListing />} />
-          {/* <Route path="/" element={<Login token = {token} setToken = {setToken}/>} /> */}
+          {/* <Route path="/" element={<ProductListing />} /> */}
+          <Route
+            path="/login"
+            element={<Login token={token} setToken={setToken} />}
+          />
           <Route path="/cart" element={<Cart onClose={hideCartHandler} />} />
           <Route
             path="/product/:productId"
             element={<ProductDetails quantity={quantity} />}
           />
+          {token ? (
+            <Route path="/" element={<ProductListing />} />
+          ) : (
+            <Route
+              path="/"
+              element={<Login token={token} setToken={setToken} />}
+            />
+          )}
+
           <Route path="*" element={<NoPage />} />
         </Routes>
       </Router>
